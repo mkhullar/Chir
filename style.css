@@ -1,0 +1,35 @@
+label {
+font-weight: normal !important;
+}
+#foodtitle{
+  clear: both;
+}
+#slider{
+  clear: both;
+}
+#sSpeed{
+  position: relative;
+  float: center;
+  padding-top: 10px;
+}
+#food {
+  position: relative;
+  width:1200px;
+  height: 400px;
+}
+#bSlider {
+position: absolute;
+margin: 20px; }
+#lSlider {
+position: absolute;
+margin: 20px; }
+#dSlider {
+position: absolute;
+margin: 20px; }
+#bground {
+position: relative;
+background: url('images/BG.jpg');
+width:240px;
+height:40px;
+float: left;
+}

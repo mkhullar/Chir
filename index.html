@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="myscripts.js" type="text/javascript"></script>
+  <script src="functions.js" type="text/javascript"></script>
+  <script src="CalorieCharts.js" type="text/javascript"></script>
+  <script src="WeightCharts.js" type="text/javascript"></script>
+</head>
+<body>
+<br>
+<div class="container">
+  <button onclick = "startSimulation()" type="button" id="RUN" class="btn btn-primary btn-md">Execute</button>
+  <button onclick = "onPause()" type="button" id="Pause" class="btn btn-primary btn-md">Pause/Play</button>
+<h4>Food</h4>
+<p class="row" style="position: absolute;">
+  <div class="col-sm-2" >Breakfast<span id="bVal" style= "font-size:100%;padding-left: 30px">0</span> cal</div>
+  <div class="col-sm-3" style="padding-left: 60px">Lunch: <span id="lVal" style= "font-size:100%;padding-left: 45px">0</span> cal</div>
+  <div class="col-sm-3">Dinner<span id="dVal" style= "font-size:100%;padding-left:55px">0</span> cal</div>
+  <div class="col-sm-3" >  Simulation Speed: </div>
+</p>
+<div class="row">
+<div class="col-sm-3" id="bground">
+<div class="col-sm-3" id="bSlider" style= "width:200px;height:8.5px;font-size:62.5%;"></div>
+</div>
+<div class="col-sm-3" id="bground">
+<div class="col-sm-3" id="lSlider" style= "width:200px;height:8.5px;font-size:62.5%;"></div>
+</div>
+<div class="col-sm-3" id="bground">
+<div class="col-sm-3" id="dSlider" style= "width:200px;height:8.5px;font-size:62.5%;"></div>
+</div>
+
+
+<div class="col-sm-3" id = "sSpeed">
+  <fieldset>
+  <input type="radio" id="x1" name="speed" value="x1" checked/>
+  <label for="x1">x1(real time)</label>
+  <input type="radio" id="x10" name="speed" value="x10"/>
+  <label for="x10">x10</label>
+  <input type="radio" id="x25" name="speed" value="x25"/>
+  <label for="x25">x25</label>
+  <input type="radio" id="x50" name="speed" value="x50"/>
+  <label for="x50">x50</label>
+</fieldset>
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-sm-4"><b>Sleep Duration :</b> <span id="sleepVal" style= "font-size:100%;padding-left: 200px">0</span> hrs</div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-4" id="sleepSlider" style= "width:400px;height:8.5px;font-size:62.5%;"></div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-2"><b>Activity Level :</b></div>
+  <div class="col-sm-4">
+    <input type="radio" id="Sedantry" name="activity" value="Sedantry" checked/>
+    <label for="Sedantry">Sedantry</label>
+    <input type="radio" id="SA" name="activity" value="Somewhat active"/>
+    <label for="SA">Somewhat active</label>
+    <input type="radio" id="Active" name="activity" value="Active"/>
+    <label for="Active">Active</label>
+    <input type="radio" id="VA" name="activity" value="Very Active"/>
+    <label for="VA">Very Active</label>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-2"><b>Extra Exercise :</b></div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-3">
+  Type
+  <br>
+  <input type="radio" id="AD" name="extraExercise" value="Aerobics and Dance" checked/>
+  <label for="AD">Aerobics and Dance</label> <br>
+  <input type="radio" id="BST"name="extraExercise" value="Badminton,Squash and Tennis"/>
+  <label for="BST">Badminton,Squash and Tennis</label><br>
+  <input type="radio" id="bball" name="extraExercise" value="Baseball"/>
+   <label for="bball">Baseball</label> <br>
+  <input type="radio" id="baskball" name="extraExercise" value="Basketball"/>
+  <label for="baskball">Basketball</label><br>
+  <input type="radio" id="bicyc" name="extraExercise" value="Bicycling"/>
+  <label for="bicyc">Bicycling</label><br>
+  <input type="radio" id="bow" name="extraExercise" value="Bowling"/>
+  <label for="bow">Bowling</label><br>
+  <input type="radio" id="cric" name="extraExercise" value="Cricket"/>
+  <label for="cric">Cricket </label><br>
+  <input type="radio" id="golf" name="extraExercise" value="Golf"/>
+  <label for="golf">Golf </label><br>
+  <input type="radio" id="run" name="extraExercise" value="Running"/>
+  <label for="run">Running </label><br>
+  <input type="radio" id="swim" name="extraExercise" value="Swimming"/>
+  <label for="swim">Swimming </label><br>
+  <input type="radio" id="Wlif" name="extraExercise" value="Weight Lifting"/>
+  <label for="Wlif">Weight Lifting </label> <br>
+  <input type="radio" id="Yoga" name="extraExercise" value="Yoga"/>
+  <label for="Yoga">Yoga</label>
+</div>
+<div class="col-sm-2">
+Duration :
+  <span id="extraExerciseVal" style= "font-size:100%;padding-left:50px;">0</span>
+  min
+  <br>
+  <div id="extraExercise" style= "width:8.5px;height:235px;font-size:80%;"></div>
+</div>
+<div class="col-sm-2" id="CaloriesChart"></div>
+<br><br><br><br><br><br><br><br><br><br>
+<div class="col-sm-2" id = "WeightsChart"></div>
+</div>
+</div>
+</body>
+</html>
