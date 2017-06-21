@@ -12,34 +12,38 @@ var vDinner = 0;
 var dataVals = [[]];
 var time = 0;
 var weightData = [[]];
-var updateTime  =  1000/speed;
+var updateTime  =  8640/speed;
 var pause = 0;
 var firstTime = 0;
 var refreshIntervalId = 0;
 
 function updateData(){
-  if(dataVals.length % 4 == 0 && time < 7300){
+  if(dataVals.length % 4 == 0 && time < 730){
     updateCalorieData(dataVals);
     dataVals = [[]];
     updateWeightData(weightData);
     weightData = [[]];
   }
+  calculateWeight();
   dataVals.push([[time,0,0],[time+9,vLunch+vBreakfast,OutVariable/2],[time+18,InVariable,OutVariable],[time+19,0,0]]);
-  weightData.push([[time,weight],[time+9,weight],[time+18,weight],[time+24,weight]]);
+  weightData.push([[time,calculateWeight()],[time+9,calculateWeight()],[time+18,calculateWeight()],[time+19,calculateWeight()]]);
   time  = time + 24;
 }
 
 function startSimulation(){
-  if(firstTime>0){
-    location.reload();
-  }
-  drawChart();
   activity();
   sportType();
   updateSpeed();
   calculateWeight();
+  updateData();
+  updateData();
+  updateData();
+  updateData();
   manageUpdate();
-  firstTime=1;
+}
+
+function reset(){
+    location.reload();
 }
 
 function manageUpdate(){
@@ -50,14 +54,20 @@ function manageUpdate(){
   },updateTime);
 }
 
-function onPause(){
-  if(pause == 0){
-    pause = 1;
-  }else {
+function onPause(event){
+  console.log(event.target);
+  if(event.target.getAttribute('id') == 'Play'){
+    event.target.setAttribute('id','Pause')
+    event.target.setAttribute('src','./images/pause.png')
     pause = 0;
-    manageUpdate();
+    startSimulation();
+    //$("#PPButton").html('Pause');
+  }else {
+    pause = 1;
+    event.target.setAttribute('id','Play')
+    event.target.setAttribute('src','./images/play.png')
+    //$("#PPButton").html('Play');
   }
-
 }
 
 
@@ -94,7 +104,7 @@ function updateSpeed(){
   speed = ( 25 );
   else if ( value == 'x50' )
   speed = ( 50 );
-  updateTime  =  1000/speed;
+  updateTime  =  86400/speed;
   if(refreshIntervalId!=0){
   clearInterval(refreshIntervalId);
   manageUpdate();
@@ -111,7 +121,8 @@ function updateOutVariable(){
 }
 
 function calculateWeight(){
-  weight  = (InVariable-OutVariable)/3500;
+  weight  = weight+(InVariable-OutVariable)/3500;
+  return weight;
 }
 
 function sportType(){

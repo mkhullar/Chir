@@ -20,39 +20,41 @@
 <body>
 <br>
 <div class="container">
-  <button onclick = "startSimulation()" type="button" id="RUN" class="btn btn-primary btn-md">Execute</button>
-  <button onclick = "onPause()" type="button" id="Pause" class="btn btn-primary btn-md">Pause/Play</button>
-<h4>Food</h4>
-<p class="row" style="position: absolute;">
-  <div class="col-sm-2" >Breakfast<span id="bVal" style= "font-size:100%;padding-left: 30px">0</span> cal</div>
-  <div class="col-sm-3" style="padding-left: 60px">Lunch: <span id="lVal" style= "font-size:100%;padding-left: 45px">0</span> cal</div>
-  <div class="col-sm-3">Dinner<span id="dVal" style= "font-size:100%;padding-left:55px">0</span> cal</div>
-  <div class="col-sm-3" >  Simulation Speed: </div>
-</p>
-<div class="row">
-<div class="col-sm-3" id="bground">
-<div class="col-sm-3" id="bSlider" style= "width:200px;height:8.5px;font-size:62.5%;"></div>
-</div>
-<div class="col-sm-3" id="bground">
-<div class="col-sm-3" id="lSlider" style= "width:200px;height:8.5px;font-size:62.5%;"></div>
-</div>
-<div class="col-sm-3" id="bground">
-<div class="col-sm-3" id="dSlider" style= "width:200px;height:8.5px;font-size:62.5%;"></div>
-</div>
-
-
-<div class="col-sm-3" id = "sSpeed">
-  <fieldset>
-  <input type="radio" id="x1" name="speed" value="x1" checked/>
-  <label for="x1">x1(real time)</label>
-  <input type="radio" id="x10" name="speed" value="x10"/>
-  <label for="x10">x10</label>
-  <input type="radio" id="x25" name="speed" value="x25"/>
-  <label for="x25">x25</label>
-  <input type="radio" id="x50" name="speed" value="x50"/>
-  <label for="x50">x50</label>
-</fieldset>
-</div>
+  <div class="PPRButtonsDIV">
+    <img onclick = "reset()" src = "./images/reset.png" type="button" id="Reset" class="PPRButon"></img>
+    <img onclick = "onPause(event)" src = "./images/play.png" type="button" id="Play" class="PPRButon"></img>
+  </div>
+<div class="foodDiv">
+  <h4>Food</h4>
+  <div class="row">
+    <div class="partition">
+      <div class="labels col-sm-2" >Breakfast<span id="bVal" style= "font-size:100%;padding-left: 30px">0</span> cal</div>
+      <div class="slider col-sm-3" id="bSlider"></div>
+    </div>
+    <div class="partition">
+      <div class="labels col-sm-3">Lunch: <span id="lVal" style= "font-size:100%;padding-left: 45px">0</span> cal</div>
+      <div class="slider col-sm-3" id="lSlider"></div>
+    </div>
+    <div class="partition">
+      <div class="labels col-sm-3">Dinner<span id="dVal" style= "font-size:100%;padding-left:55px">0</span> cal</div>
+      <div class="slider col-sm-3" id="dSlider"></div>
+    </div>
+    <div class="partition">
+      <div class="labels col-sm-3" >  Simulation Speed: </div>
+      <div class="col-sm-3" id = "sSpeed">
+        <fieldset>
+        <input type="radio" id="x1" name="speed" value="x1" checked/>
+        <label for="x1">x1(real time)</label>
+        <input type="radio" id="x10" name="speed" value="x10"/>
+        <label for="x10">x10</label>
+        <input type="radio" id="x25" name="speed" value="x25"/>
+        <label for="x25">x25</label>
+        <input type="radio" id="x50" name="speed" value="x50"/>
+        <label for="x50">x50</label>
+      </fieldset>
+      </div>
+    <div>
+  </div>
 </div>
 <br>
 <div class="row">

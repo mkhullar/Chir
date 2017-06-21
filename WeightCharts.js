@@ -1,4 +1,8 @@
-google.charts.load('current', {'packages':['line']});
+//google.charts.load('current', {'packages':['line']});
+google.charts.load('visualization', '1', {
+        packages: ['corechart']
+      });
+var rowNum = 0;
 google.charts.setOnLoadCallback(drawChart);
 var weightdata;
 //arrData = [];
@@ -12,7 +16,8 @@ weightdata = new google.visualization.DataTable();
 weightdata.addColumn('number', 'Hours');
 weightdata.addColumn('number', 'Weight');
 
-weightdata.addRows([[tempArr[1][0][0],tempArr[1][0]][1]]);
+//weightdata.addRows([[tempArr[1][0][0],tempArr[1][0]][1]]);
+weightdata.addRows([[0,0]]);
 options = {
   width: 630,
   height: 160,
@@ -32,14 +37,11 @@ function updateWeightData(dataInput){
 var i = 1;
 if (flag==0){
 drawWeightChart(dataInput);
-flag = 1;
-for(i=2;i<dataInput.length;i++){
-weightdata.insertRows(0,dataInput[i]);
-weightChart.draw(weightdata, options);
-}
-}
+flag = 1;}
 for(i=1;i<dataInput.length;i++){
-weightdata.insertRows(0,dataInput[i]);
+weightdata.insertRows(rowNum,dataInput[i]);
+weightdata.sort([{column: 0}]);
 weightChart.draw(weightdata, options);
+rowNum++;
 }
 }

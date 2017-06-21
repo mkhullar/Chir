@@ -11,25 +11,38 @@ font-weight: normal !important;
   position: relative;
   float: center;
   padding-top: 10px;
+  width:100%;
 }
 #food {
   position: relative;
   width:1200px;
   height: 400px;
 }
-#bSlider {
-position: absolute;
-margin: 20px; }
-#lSlider {
-position: absolute;
-margin: 20px; }
-#dSlider {
-position: absolute;
-margin: 20px; }
 #bground {
 position: relative;
-background: url('images/BG.jpg');
 width:240px;
 height:40px;
 float: left;
+}
+.PPRButon{
+  width:45px;
+  height:45px;
+}
+.PPRButtonsDIV{
+  width:auto;
+  height:42px;
+}
+.partition{
+  float:left;
+  width:25%;
+  height:auto;
+}
+.labels{
+   width:100%;
+}
+.slider{
+  width:200px;
+  height:8.5px;
+  font-size:62.5%;
+  margin-top: 15px;
 }
